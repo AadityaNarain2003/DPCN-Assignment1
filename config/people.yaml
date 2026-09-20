@@ -1,0 +1,31 @@
+# Participant-to-participant analysis configuration.
+
+data:
+  raw_input: Data/Data_Clean.csv
+  id_column: "id. Response ID"
+  excluded_columns:
+    - "id. Response ID"
+    - "missing_count"
+    - "answered_count"
+    - "missing_percent"
+
+similarity:
+  method: spearman
+  min_common_responses: 40
+  output_matrix: Data/People_Spearman_Matrix.csv
+
+network:
+  matrix_input: Data/People_Spearman_Matrix.csv
+  static_thresholds: [0.20, 0.30, 0.40, 0.50]
+  threshold_min: 0.00
+  threshold_max: 0.90
+  threshold_step: 0.05
+  er_simulations: 100
+  random_seed: 42
+  static_output_dir: Data/People_Networks
+  threshold_output: Data/People_Network_Threshold_Analysis.csv
+  display:
+    label_prefix: P
+    figure_size: [20, 16]
+    layout_k: 3.5
+    layout_iterations: 1000

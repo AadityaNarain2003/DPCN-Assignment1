@@ -1,0 +1,47 @@
+# Question-to-question analysis configuration.
+
+data:
+  raw_input: Data/Data_Clean.csv
+  id_column: "id. Response ID"
+  question_prefixes: [T, E, S, V]
+
+similarity:
+  method: spearman
+  min_common_responses: 40
+  output_matrix: Data/Question_Spearman_Matrix.csv
+
+network:
+  matrix_input: Data/Question_Spearman_Matrix.csv
+  static_thresholds: [0.20, 0.30, 0.40, 0.50]
+  threshold_min: 0.00
+  threshold_max: 0.90
+  threshold_step: 0.05
+  er_simulations: 100
+  random_seed: 42
+  static_output_dir: Data/Question_Networks
+  threshold_output: Data/Question_Network_Threshold_Analysis.csv
+  domain_analysis_threshold: 0.30
+  domain_output: Data/Question_Network_Domain_Analysis.csv
+
+  display:
+    figure_size: [20, 16]
+    layout_k: 3.5
+    layout_iterations: 1000
+
+  domains:
+    T:
+      name: Artificial Intelligence
+      color: "#4C78A8"
+      shape: "o"
+    E:
+      name: Education
+      color: "#F58518"
+      shape: "s"
+    S:
+      name: Social
+      color: "#54A24B"
+      shape: "^"
+    V:
+      name: Environment
+      color: "#B279A2"
+      shape: "D"

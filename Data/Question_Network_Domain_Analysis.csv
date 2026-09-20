@@ -1,0 +1,11 @@
+domain_1,domain_2,edges,threshold
+Artificial Intelligence,Artificial Intelligence,7,0.3
+Artificial Intelligence,Education,7,0.3
+Artificial Intelligence,Environment,13,0.3
+Artificial Intelligence,Social,14,0.3
+Education,Education,26,0.3
+Education,Environment,28,0.3
+Education,Social,22,0.3
+Social,Social,50,0.3
+Environment,Social,78,0.3
+Environment,Environment,80,0.3
